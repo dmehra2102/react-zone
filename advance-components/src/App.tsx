@@ -1,20 +1,21 @@
-import { useRef } from "react";
+import Form from "./components/Form";
 import Input from "./components/Input";
 import Button from "./components/Button";
-import Container from "./components/Container";
 
 function App() {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const handleSave = (value: unknown) => {
+    value as { name: string; age: string };
+  };
   return (
     <main>
-      <Input id="name" label="name" type="text" ref={inputRef} />
+      <Form onSave={handleSave}>
+        <Input type="text" id="name" label="name" />
+        <Input type="number" id="age" label="age" />
 
-      <Button disabled>My Button</Button>
-      <Button href="http://youtube.com" target="_blank">
-        My Link
-      </Button>
-
-      <Container as={"button"}>?</Container>
+        <p>
+          <Button>Save</Button>
+        </p>
+      </Form>
     </main>
   );
 }
