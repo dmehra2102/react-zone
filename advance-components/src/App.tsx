@@ -1,7 +1,8 @@
-import Form, { type FormHandler } from "./components/UI/Form";
-import Input from "./components/UI/Input";
-import Button from "./components/UI/Button";
+import { type FormHandler } from "./components/UI/Form";
 import { useRef } from "react";
+import AddTimer from "./components/AddTimer";
+import Header from "./components/Header";
+import Timers from "./components/Timers";
 
 function App() {
   const ref = useRef<FormHandler>(null);
@@ -11,16 +12,13 @@ function App() {
     ref.current?.clear();
   };
   return (
-    <main>
-      <Form onSave={handleSave} ref={ref}>
-        <Input type="text" id="name" label="name" />
-        <Input type="number" id="age" label="age" />
-
-        <p>
-          <Button>Save</Button>
-        </p>
-      </Form>
-    </main>
+    <>
+      <Header />
+      <main>
+        <AddTimer />
+        <Timers />
+      </main>
+    </>
   );
 }
 
