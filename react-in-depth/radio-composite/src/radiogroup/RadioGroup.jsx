@@ -1,23 +1,10 @@
-import { useState } from "react";
-import { RadioGroupContext } from "./contexts";
 import { Option } from "./Option";
 import { Details } from "./Details";
+import { RadioGroupContext } from "./contexts";
+import { useContextValue } from "./useContextValue";
 
 export function RadioGroup({ children, name, onChange }) {
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const handleChange = (value) => {
-    setSelectedValue(value);
-    if (onChange) {
-      onChange(value);
-    }
-  };
-
-  const contextValue = {
-    name,
-    selectedValue,
-    onChange: handleChange,
-  };
+  const contextValue = useContextValue({ name, onChange });  
 
   return (
     <div
